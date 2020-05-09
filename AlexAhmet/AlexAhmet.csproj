@@ -7,7 +7,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="5eb084077a04c1ddf1a5fd9d4b3a0365.png" />
+    <None Remove="img_495803.png" />
+    <None Remove="img_496789.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="4.7.0" />
+    <PackageReference Include="NLog.Config" Version="4.7.0" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="5eb084077a04c1ddf1a5fd9d4b3a0365.png" />
+    <Resource Include="img_495803.png" />
+    <Resource Include="img_496789.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="C:\Users\User\.nuget\packages\nlog.config\4.7.0\contentFiles\any\any\NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

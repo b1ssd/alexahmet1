@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using NLog;
+
 
 namespace AlexAhmet
 {
@@ -19,7 +21,7 @@ namespace AlexAhmet
     /// </summary>
     public partial class Window1 : Window
     {
-
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         public Window1()
         {
             InitializeComponent();
@@ -28,20 +30,67 @@ namespace AlexAhmet
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            openFileDialog.Filter = "All files (*.*)|*.*|Text files (*.txt)|*.txt";
-
-            if (openFileDialog.ShowDialog() == true)
+            try
             {
-                FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
-                
-                    StreamReader reader = new StreamReader(fileInfo.Open(FileMode.Open, FileAccess.Read), Encoding.GetEncoding(1251));
-                    TextBox1.Text = reader.ReadToEnd();
-                    reader.Close();
-                    return;
-                
+                logger.Info("Была нажата кнопка открытия файла");
+
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+
+                openFileDialog.Filter = "All files (*.*)|*.*|PNG Photos (*.png)|*.png|Text files (*.txt)|*.txt";
+
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
+
+                    if (fileInfo.Extension.ToLower() == ".png")
+                    {
+                        try
+                        {
+                            logger.Info("Было открыто изображение");
+                            TextBox1.Visibility = Visibility.Hidden;
+                            Image.Visibility = Visibility.Visible;
+
+                            BitmapImage loadImage = new BitmapImage();
+                            loadImage.BeginInit();
+                            loadImage.UriSource = new Uri(fileInfo.FullName);
+                            loadImage.EndInit();
+
+                            Image.Source = loadImage;
+
+                            return;
+                        }
+                        catch
+                        {
+                            logger.Error("Произошла ошибка при попытке открытия изображения");
+                        }
+                    }
+
+                    if (fileInfo.Extension.ToLower() == ".txt")
+                    {
+                        try
+                        {
+                            logger.Info("Был открыт текстовый файл");
+                            TextBox1.Visibility = Visibility.Visible;
+                            Image.Visibility = Visibility.Hidden;
+                            StreamReader reader = new StreamReader(fileInfo.Open(FileMode.Open, FileAccess.Read), Encoding.GetEncoding(1251));
+
+                            TextBox1.Text = reader.ReadToEnd();
+
+                            reader.Close();
+                            return;
+                        }
+                        catch
+                        {
+                            logger.Error("Произошла ошибка при попытке открытия текстового файла");
+                        }
+                    }
+                }
+            }
+
+            catch
+            {
+                logger.Error("Произошла ошибка при попытке открытия файла");
             }
         }
     }

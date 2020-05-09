@@ -8,7 +8,8 @@
         Title="Window1" Height="450" Width="800">
     <Grid>
         <Button Content="Открыть" HorizontalAlignment="Center" Margin="0,37,0,0" VerticalAlignment="Top" Height="35" Width="92" Click="Button_Click_1"/>
-        <TextBox x:Name="TextBox1" HorizontalAlignment="Center" Height="295" Margin="0,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="534"/>
+        <TextBox x:Name="TextBox1" HorizontalAlignment="Center" Height="295" Margin="0,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="534" Visibility="Hidden"/>
+        <Image x:Name="Image" HorizontalAlignment="Left" Height="298" Margin="133,99,0,0" VerticalAlignment="Top" Width="532" Visibility="Hidden"/>
 
     </Grid>
 </Window>

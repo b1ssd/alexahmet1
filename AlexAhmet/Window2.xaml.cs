@@ -20,8 +20,7 @@ namespace AlexAhmet
     /// </summary>
     public partial class Window2 : Window
     {
-        public System.Media.SoundPlayer Sound { get; set; }
-
+        public MediaPlayer Player { get; set; }
         public Window2()
         {
             InitializeComponent();
@@ -32,11 +31,13 @@ namespace AlexAhmet
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
-            openFileDialog.Filter = "All files (*.*)|*.*|музло бля (*.wav)|*.wav";
+            openFileDialog.Filter = "All files (*.*)|*.*|Wav gavno (*.wav)|*.wav|mp3 po kaify (*.mp3)|*.mp3";
 
             if (openFileDialog.ShowDialog() == true)
             {
-                Sound = new System.Media.SoundPlayer(openFileDialog.FileName);
+                Uri uri = new Uri(openFileDialog.FileName);
+                Player = new MediaPlayer();
+                Player.Open(uri);
                 Label.Content = openFileDialog.SafeFileName;
 
             }
@@ -44,12 +45,23 @@ namespace AlexAhmet
 
         private void Image1_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Sound.Play();
+          Player.Play();
+            Image1.Visibility = Visibility.Hidden;
+            Image3.Visibility = Visibility.Visible;
         }
 
         private void Image2_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Sound.Stop();
+           Player.Stop();
+            Image1.Visibility = Visibility.Visible;
+            Image3.Visibility = Visibility.Hidden;
+        }
+
+        private void Image3_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Player.Pause();
+            Image1.Visibility = Visibility.Visible;
+            Image3.Visibility = Visibility.Hidden;
         }
     }
 }

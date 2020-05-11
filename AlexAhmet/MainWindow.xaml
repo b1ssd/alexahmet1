@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AlexAhmet"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Меню " Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="ZDAROVA" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,44,0,0"/>
         <Button Content="Файл" HorizontalAlignment="Center" Margin="0,85,0,0" VerticalAlignment="Top" Height="37" Width="88" Click="Button_Click"/>
         <Button Content="Аудиоплеер" HorizontalAlignment="Center" Height="37" Margin="0,137,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click_1"/>
+        <Button Content="О программе" HorizontalAlignment="Center" Height="37" Margin="0,192,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click_2"/>
+        <Button Content="Настройки" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.175,0.435" Click="Button_Click_3"/>
 
     </Grid>
 </Window>

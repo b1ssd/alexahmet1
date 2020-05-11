@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AlexAhmet"
         mc:Ignorable="d"
-        Title="Window2" Height="450" Width="800">
-    <Grid>
-        <Label x:Name="Label" Content="" HorizontalAlignment="Left" Margin="245,99,0,0" VerticalAlignment="Top" Width="212" HorizontalContentAlignment="Left" Height="67" FontFamily="Ninja Naruto" FontSize="48" RenderTransformOrigin="0.423,0.52"/>
+        Title="Плеер" Height="450" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="___Без_имени_">
+        <Label x:Name="Label" Content="" HorizontalAlignment="Left" Margin="245,99,0,0" VerticalAlignment="Top" Width="212" HorizontalContentAlignment="Left" Height="67" FontFamily="Ninja Naruto" FontSize="24" RenderTransformOrigin="0.423,0.52"/>
         <Button Content="Открыть" HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top" Height="33" Width="80" Click="Button_Click"/>
         <Image x:Name="Image1" HorizontalAlignment="Left" Height="32" Margin="490,108,0,0" VerticalAlignment="Top" Width="30" Source="/img_495803.png" PreviewMouseLeftButtonUp="Image1_PreviewMouseLeftButtonUp" Visibility="Visible"/>
         <Image x:Name="Image2" HorizontalAlignment="Left" Height="32" Margin="524,108,0,0" VerticalAlignment="Top" Width="30" Source="/img_496789.png" PreviewMouseLeftButtonUp="Image2_PreviewMouseLeftButtonUp"/>
-        <Image x:Name="Image3"  HorizontalAlignment="Left" Height="32" Margin="490,102,0,0" VerticalAlignment="Top" Width="30" Source="/5eb084077a04c1ddf1a5fd9d4b3a0365.png" Visibility="Hidden" PreviewMouseLeftButtonUp="Image3_PreviewMouseLeftButtonUp"/>
+        <Image x:Name="Image3"  HorizontalAlignment="Left" Height="32" Margin="490,108,0,0" VerticalAlignment="Top" Width="30" Source="/5eb084077a04c1ddf1a5fd9d4b3a0365.png" Visibility="Hidden" PreviewMouseLeftButtonUp="Image3_PreviewMouseLeftButtonUp"/>
+        <Slider x:Name="Slider" HorizontalAlignment="Center" VerticalAlignment="Center" Width="244" Height="40" IsEnabled="False"/>
     </Grid>
 </Window>

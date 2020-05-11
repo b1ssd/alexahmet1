@@ -62,5 +62,35 @@ namespace AlexAhmet
                 logger.Error("Произошла ошибка при попытке нажатия кнопки 'Аудиоплеер'");
             }
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                logger.Info("Была нажата кнопка 'О программе'");
+                Window3 window3 = new Window3();
+                window3.Show();
+                window3.Owner = this;
+            }
+            catch
+            {
+                logger.Error("Произошла ошибка при попытке нажатия кнопки 'О программе'");
+            }
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                logger.Info("Была нажата кнопка 'Настройки'");
+                Window4 window4 = new Window4();
+                window4.Show();
+                window4.Owner = this;
+            }
+            catch
+            {
+                logger.Error("Произошла ошибка при попытке нажатия кнопки 'Настройки'");
+            }
+        }
     }
 }

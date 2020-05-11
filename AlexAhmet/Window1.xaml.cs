@@ -47,7 +47,7 @@ namespace AlexAhmet
                     {
                         try
                         {
-                            logger.Info("Было открыто изображение");
+                            
                             TextBox1.Visibility = Visibility.Hidden;
                             Image.Visibility = Visibility.Visible;
 
@@ -57,8 +57,9 @@ namespace AlexAhmet
                             loadImage.EndInit();
 
                             Image.Source = loadImage;
-
+                            logger.Info("Было открыто изображение");
                             return;
+                            
                         }
                         catch
                         {
@@ -70,7 +71,7 @@ namespace AlexAhmet
                     {
                         try
                         {
-                            logger.Info("Был открыт текстовый файл");
+                            TextBox1.IsReadOnly = true;                           
                             TextBox1.Visibility = Visibility.Visible;
                             Image.Visibility = Visibility.Hidden;
                             StreamReader reader = new StreamReader(fileInfo.Open(FileMode.Open, FileAccess.Read), Encoding.GetEncoding(1251));
@@ -78,7 +79,9 @@ namespace AlexAhmet
                             TextBox1.Text = reader.ReadToEnd();
 
                             reader.Close();
+                            logger.Info("Был открыт текстовый файл");
                             return;
+                            
                         }
                         catch
                         {
@@ -92,6 +95,27 @@ namespace AlexAhmet
             {
                 logger.Error("Произошла ошибка при попытке открытия файла");
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                logger.Info("Была нажата кнопка возвращения в меню");
+
+            }
+            catch
+            {
+                logger.Error("Проищошла ошибка при попытке возвращения в меню");
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            TextBox1.Text = "";
+            TextBox1.Visibility = Visibility.Hidden;
+            Image.Visibility = Visibility.Hidden;
         }
     }
 }
